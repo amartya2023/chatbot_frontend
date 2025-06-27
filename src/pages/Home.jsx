@@ -66,17 +66,24 @@ const Home = () => {
               {messages && messages.length > 0 ? (
                 messages.map((e, i) => (
                   <div key={i}>
-                    <div className="mb-4 p-4 rounded bg-blue-700 text-white flex gap-1">
-                      <div className="bg-white p-2 rounded-full text-black text-2xl h-10">
+                    {/* ✅ User Message */}
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="bg-white p-2 rounded-full text-black text-2xl h-10 w-10 flex justify-center items-center">
                         <CgProfile />
                       </div>
-                      {e.question}
+                      <div className="bg-blue-700 p-4 rounded-lg max-w-2xl w-fit text-white text-sm md:text-base">
+                        {e.question}
+                      </div>
                     </div>
-                    <div className="mb-4 p-4 rounded bg-gray-700 text-white flex gap-1">
-                      <div className="bg-white p-2 rounded-full text-black text-2xl h-10">
+
+                    {/* ✅ Bot Message with Typography plugin */}
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="bg-white p-2 rounded-full text-black text-2xl h-10 w-10 flex justify-center items-center">
                         <FaRobot />
                       </div>
-                      <p dangerouslySetInnerHTML={{ __html: e.answer }}></p>
+                      <div className="bg-gray-700 p-4 rounded-lg max-w-2xl w-fit text-white prose prose-invert text-sm md:text-base">
+                        <div dangerouslySetInnerHTML={{ __html: e.answer }} />
+                      </div>
                     </div>
                   </div>
                 ))
@@ -90,6 +97,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Chat Input */}
       {chats && chats.length === 0 ? (
         ""
       ) : (
